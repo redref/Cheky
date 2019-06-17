@@ -445,7 +445,7 @@ class Main
                         } else {
                             $ads = array_reverse($ads, true);
                             foreach ($ads AS $ad) {
-                                $this->_mailer->Subject = ($alert->title?$alert->title." : ":"").$ad->getTitle();
+                                $this->_mailer->Subject = ($alert->title?$alert->title." : ":"").$ad->getTitle()." [".$ad->getId()."]";
                                 $this->_mailer->Body = require DOCUMENT_ROOT."/app/notifier/views/mail-ad-single.phtml";
                                 $this->_mailer->AltBody = require DOCUMENT_ROOT."/app/notifier/views/mail-ad-single-text.phtml";
                                 try {

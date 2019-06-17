@@ -1,5 +1,11 @@
 <?php ob_start(); ?>
 
+<hr />
+<br />
+
+<?php echo require DOCUMENT_ROOT."/app/notifier/views/mail-ad.phtml"; ?>
+<br />
+
 <h1 style="font-size: 16px;">
     Votre recherche :
     <?php echo htmlspecialchars($alert->title, null, "UTF-8"); ?>
@@ -18,12 +24,6 @@
 <?php endif; ?>
     </strong>
 </p>
-
-<hr />
-<br />
-
-<?php echo require DOCUMENT_ROOT."/app/notifier/views/mail-ad.phtml"; ?>
-<br />
 
 <?php
 return ob_get_clean();
