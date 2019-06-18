@@ -86,11 +86,11 @@ class Lbc extends AbstractParser
 
             if (isset($data["images"]["urls_large"])) {
                 $images = $data["images"]["urls_large"];
-    
+
             } elseif (isset($data["images"]["urls"])) {
                 $images = $data["images"]["urls"];
             }
-    
+
             if (!empty($images)) {
                 $photos = array();
                 foreach ($images AS $image) {

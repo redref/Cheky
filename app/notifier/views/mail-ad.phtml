@@ -37,7 +37,7 @@
     <?php $photos = $ad->getPhotos(); ?>
     <?php if (count($photos) > 0) : ?>
         <?php foreach($photos as $photo) : ?>
-            <img src="<?php echo $photo; ?>" alt="" style="max-width: 100%; max-height: 600px; overflow:hidden;" />
+            <img src="<?php echo $photo['remote']; ?>" alt="" style="max-width: 100%; max-height: 600px; overflow:hidden;" />
         <?php endforeach; ?>
     <?php else : ?>
     Pas de photo disponible.
