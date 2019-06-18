@@ -8,6 +8,10 @@
         <strong>Prix</strong> : <?php echo number_format($ad->getPrice(), 0, ',', ' '); ?> <?php echo $ad->getCurrency(); ?>
     <?php endif; ?>
     <br />
+    <?php if ($ad->getDescription()) : ?>
+        <strong>Description</strong> : <?php echo $ad->getDescription(); ?> <?php echo $ad->getCurrency(); ?>
+    <?php endif; ?>
+    <br />
     <?php if ($ad->getCategory()) : ?>
         <strong>Catégorie</strong> : <?php echo $ad->getCategory(); ?>
     <?php endif; ?>
@@ -30,11 +34,13 @@
     <strong style="color: #FF8900;">urgent</strong>
     <?php endif; ?>
     <br />
-    <?php if ($ad->getThumbnailLink()) : ?>
-    <br /><img src="<?php echo str_replace('/thumbs/', '/images/', $ad->getThumbnailLink()); ?>" alt=""
-        style="max-width: 100%; max-height: 600px; overflow:hidden;" />
+    <?php $photos = $ad->getPhotos(); ?>
+    <?php if (count($photos) > 0) : ?>
+        <?php forearch($photos as $photo) : ?>
+            <img src="<?php echo $photo; ?>" alt="" style="max-width: 100%; max-height: 600px; overflow:hidden;" />
+        <?php endforeach; ?>
     <?php else : ?>
-    <br />Pas de photo disponible.
+    Pas de photo disponible.
     <?php endif; ?>
 
     <br />
