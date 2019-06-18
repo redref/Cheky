@@ -80,6 +80,29 @@ class Lbc extends AbstractParser
                 $ad->setTitle($data["subject"]);
             }
 
+            if (isset($data["body"])) {
+                $ad->setDescription($data["body"]);
+            }
+
+            if (isset($data["images"]["urls_large"])) {
+                $images = $data["images"]["urls_large"];
+    
+            } elseif (isset($data["images"]["urls"])) {
+                $images = $data["images"]["urls"];
+            }
+    
+            if (!empty($images)) {
+                $photos = array();
+                foreach ($images AS $image) {
+                    $image = $this->formatLink($image);
+                    $photos[] = array(
+                        "remote" => $image,
+                        "local" => sha1($image).".jpg",
+                    );
+                }
+                $ad->setPhotos($photos);
+            }
+
             if (isset($data["category_name"])) {
                 $ad->setCategory($data["category_name"]);
             }
